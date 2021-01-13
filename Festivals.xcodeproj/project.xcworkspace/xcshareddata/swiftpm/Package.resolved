@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos",
+        "state": {
+          "branch": null,
+          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+          "version": "23.0.0"
+        }
+      },
+      {
+        "package": "LoremIpsum",
+        "repositoryURL": "https://github.com/lukaskubanek/LoremIpsum",
+        "state": {
+          "branch": null,
+          "revision": "e7c764bdcca6d5448102c760c1d1db0318ea708e",
+          "version": "2.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
