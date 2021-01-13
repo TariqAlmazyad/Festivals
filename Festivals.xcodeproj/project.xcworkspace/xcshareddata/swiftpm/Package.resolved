@@ -18,6 +18,33 @@
           "revision": "e7c764bdcca6d5448102c760c1d1db0318ea708e",
           "version": "2.0.0"
         }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios",
+        "state": {
+          "branch": null,
+          "revision": "e02e82c7c1b472e85e641a7624e99c855e21add1",
+          "version": "3.1.9"
+        }
+      },
+      {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-cocoa.git",
+        "state": {
+          "branch": null,
+          "revision": "c236b2c1270fe41ba7c101a1d17ef56494987cb9",
+          "version": "10.5.0"
+        }
+      },
+      {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "7390723ae39b432bd00f093ea84e3b79534a202c",
+          "version": "10.3.2"
+        }
       }
     ]
   },

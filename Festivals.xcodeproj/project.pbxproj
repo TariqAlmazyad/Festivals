@@ -11,12 +11,17 @@
 		83F29B9825AF8F4A00AA1310 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B9725AF8F4A00AA1310 /* Tests_macOS.swift */; };
 		83F29B9A25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */; };
 		83F29B9B25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */; };
-		83F29B9C25AF8F4A00AA1310 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7225AF8F4900AA1310 /* ContentView.swift */; };
-		83F29B9D25AF8F4A00AA1310 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7225AF8F4900AA1310 /* ContentView.swift */; };
+		83F29B9C25AF8F4A00AA1310 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7225AF8F4900AA1310 /* MainTabView.swift */; };
+		83F29B9D25AF8F4A00AA1310 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7225AF8F4900AA1310 /* MainTabView.swift */; };
 		83F29B9E25AF8F4A00AA1310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F29B7325AF8F4A00AA1310 /* Assets.xcassets */; };
 		83F29B9F25AF8F4A00AA1310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F29B7325AF8F4A00AA1310 /* Assets.xcassets */; };
 		83F29BB425AF937700AA1310 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 83F29BB325AF937700AA1310 /* Cosmos */; };
 		83F29BBB25AF939100AA1310 /* LoremIpsum in Frameworks */ = {isa = PBXBuildFile; productRef = 83F29BBA25AF939100AA1310 /* LoremIpsum */; };
+		83F29BC125AF9D9300AA1310 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29BC025AF9D9300AA1310 /* HomeView.swift */; };
+		83F29BC225AF9D9300AA1310 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29BC025AF9D9300AA1310 /* HomeView.swift */; };
+		83F29BD125AF9DFB00AA1310 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 83F29BD025AF9DFB00AA1310 /* Lottie */; };
+		83F29BD825AF9EB600AA1310 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 83F29BD725AF9EB600AA1310 /* Realm */; };
+		83F29BDA25AF9EB600AA1310 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 83F29BD925AF9EB600AA1310 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,7 @@
 
 /* Begin PBXFileReference section */
 		83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalsApp.swift; sourceTree = "<group>"; };
-		83F29B7225AF8F4900AA1310 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		83F29B7225AF8F4900AA1310 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		83F29B7325AF8F4A00AA1310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83F29B7825AF8F4A00AA1310 /* Festivals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Festivals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F29B7B25AF8F4A00AA1310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		83F29B9325AF8F4A00AA1310 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F29B9725AF8F4A00AA1310 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		83F29B9925AF8F4A00AA1310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83F29BC025AF9D9300AA1310 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 			files = (
 				83F29BB425AF937700AA1310 /* Cosmos in Frameworks */,
 				83F29BBB25AF939100AA1310 /* LoremIpsum in Frameworks */,
+				83F29BD825AF9EB600AA1310 /* Realm in Frameworks */,
+				83F29BDA25AF9EB600AA1310 /* RealmSwift in Frameworks */,
+				83F29BD125AF9DFB00AA1310 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */,
-				83F29B7225AF8F4900AA1310 /* ContentView.swift */,
+				83F29B7225AF8F4900AA1310 /* MainTabView.swift */,
+				83F29BC025AF9D9300AA1310 /* HomeView.swift */,
 				83F29B7325AF8F4A00AA1310 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -174,6 +184,9 @@
 			packageProductDependencies = (
 				83F29BB325AF937700AA1310 /* Cosmos */,
 				83F29BBA25AF939100AA1310 /* LoremIpsum */,
+				83F29BD025AF9DFB00AA1310 /* Lottie */,
+				83F29BD725AF9EB600AA1310 /* Realm */,
+				83F29BD925AF9EB600AA1310 /* RealmSwift */,
 			);
 			productName = "Festivals (iOS)";
 			productReference = 83F29B7825AF8F4A00AA1310 /* Festivals.app */;
@@ -269,6 +282,8 @@
 			packageReferences = (
 				83F29BB225AF937700AA1310 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				83F29BB925AF939100AA1310 /* XCRemoteSwiftPackageReference "LoremIpsum" */,
+				83F29BCF25AF9DFB00AA1310 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				83F29BD625AF9EB600AA1310 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 83F29B7925AF8F4A00AA1310 /* Products */;
 			projectDirPath = "";
@@ -320,8 +335,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83F29B9C25AF8F4A00AA1310 /* ContentView.swift in Sources */,
+				83F29B9C25AF8F4A00AA1310 /* MainTabView.swift in Sources */,
 				83F29B9A25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */,
+				83F29BC125AF9D9300AA1310 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,8 +345,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83F29B9D25AF8F4A00AA1310 /* ContentView.swift in Sources */,
+				83F29B9D25AF8F4A00AA1310 /* MainTabView.swift in Sources */,
 				83F29B9B25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */,
+				83F29BC225AF9D9300AA1310 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +743,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		83F29BCF25AF9DFB00AA1310 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.9;
+			};
+		};
+		83F29BD625AF9EB600AA1310 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -738,6 +771,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 83F29BB925AF939100AA1310 /* XCRemoteSwiftPackageReference "LoremIpsum" */;
 			productName = LoremIpsum;
+		};
+		83F29BD025AF9DFB00AA1310 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83F29BCF25AF9DFB00AA1310 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		83F29BD725AF9EB600AA1310 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83F29BD625AF9EB600AA1310 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		83F29BD925AF9EB600AA1310 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83F29BD625AF9EB600AA1310 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -31,6 +31,7 @@ enum TabBarButtons: String, CaseIterable {
         case .Profile: return "person"
         }
     }
+    
     var padding: CGFloat {
         switch self {
         case .House: return 4
@@ -41,8 +42,9 @@ enum TabBarButtons: String, CaseIterable {
     }
 }
 
-struct ContentView: View {
+struct MainTabView: View {
     @State private (set) var selectedTabIndex: TabBarButtons = .House
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)), Color(#colorLiteral(red: 0.09998283535, green: 0.1434168518, blue: 0.1889503896, alpha: 1))]),
@@ -60,6 +62,7 @@ struct ContentView: View {
                         .tag(TabBarButtons.Profile)
                     
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .foregroundColor(.white)
                 Spacer()
                 HStack(alignment: .bottom){
                     ForEach(TabBarButtons.allCases, id:\.self) { tabBarButton in
@@ -81,13 +84,14 @@ struct ContentView: View {
                                 
                             }.padding(.bottom, tabBarButton.padding)
                             .offset( y: selectedTabIndex == tabBarButton ? -10 : 0)
+                            
                         })
                         Spacer()
                     }
                     
                 }.frame(width: UIScreen.main.bounds.width - 50, height: 80)
                 .background(Color(#colorLiteral(red: 0.2077952027, green: 0.2640034556, blue: 0.3278865218, alpha: 1)))
-                .cornerRadius(25.0)
+                .clipShape(Capsule())
             }
         }
     }
@@ -95,7 +99,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainTabView()
     }
 }
 
