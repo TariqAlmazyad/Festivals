@@ -72,7 +72,7 @@ struct MainTabView: View {
                                 selectedTabIndex = tabBarButton
                             }
                         }, label: {
-                            VStack(spacing: 12){
+                            VStack(spacing: 18){
                                 Spacer()
                                 Image(systemName: selectedTabIndex == tabBarButton ? tabBarButton.selectedImageName : tabBarButton.unSelectedImageName)
                                     .shadow(color: selectedTabIndex == tabBarButton ? .white : .clear, radius: 10, x: 0.0, y: 0.0)
@@ -81,7 +81,6 @@ struct MainTabView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                     .fill(selectedTabIndex == tabBarButton ? Color.white : Color.clear)
                                     .frame(width: 40, height: 3)
-                                
                             }.padding(.bottom, tabBarButton.padding)
                             .offset( y: selectedTabIndex == tabBarButton ? -10 : 0)
                             
