@@ -52,7 +52,7 @@ struct MainTabView: View {
                 .ignoresSafeArea()
             VStack{
                 TabView(selection: $selectedTabIndex) {
-                    Text("House")
+                    HomeView()
                         .tag(TabBarButtons.House)
                     Text("Ticket")
                         .tag(TabBarButtons.Ticket)
@@ -65,8 +65,9 @@ struct MainTabView: View {
                 .foregroundColor(.white)
                 Spacer()
                 ButtonsTabView(selectedTabIndex: $selectedTabIndex)
+                    .padding()
             }
-        }
+        }.ignoresSafeArea()
     }
 }
 
