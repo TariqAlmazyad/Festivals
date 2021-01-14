@@ -25,6 +25,7 @@ struct HomeView: View {
                         .font(.system(size: 24, weight: .light, design: .rounded))
                 })
             }.padding()
+            
             SearchBar(searchedText: $searchedText)
             // category
             CategoriesScrollView(selectedCategory: $selectedCategory)
@@ -48,15 +49,12 @@ struct HomeView: View {
                             
                         }.frame(width: 125, height: 360)
                         
-                        
                     }
                 }.padding(32)
                 .padding(.horizontal, 34)
                 .padding(.vertical)
                 
-                
             }
-            
             Spacer()
         }.ignoresSafeArea()
     }
@@ -65,68 +63,5 @@ struct HomeView: View {
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
-    }
-}
-
-
-struct MusicFestivalCellView: View {
-    let proxy: GeometryProxy
-    let festival: Festival
-    var body: some View {
-        ZStack {
-            Image(festival.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 250)
-                .clipped()
-                .cornerRadius(20)
-                .shadow(radius: 5)
-                .scaleEffect(CGSize(width: .getScale(proxy: proxy, scalerView: .leftView),
-                                    height: .getScale(proxy: proxy, scalerView: .leftView)))
-                .animation(.easeOut(duration: 0.5))
-            LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black]),
-                           startPoint: .center, endPoint: .bottom)
-                .frame(width: 250)
-                .clipped()
-                .cornerRadius(20)
-                .shadow(radius: 5)
-                .scaleEffect(CGSize(width: .getScale(proxy: proxy, scalerView: .leftView),
-                                    height: .getScale(proxy: proxy, scalerView: .leftView)))
-                .animation(.easeOut(duration: 0.5))
-            VStack{
-                HStack{
-                    Spacer()
-                    Button(action: {}, label: {
-                        Image(systemName: "heart")
-                            .font(.title)
-                            .padding(6)
-                            .background(Color.gray.opacity(0.4))
-                            .cornerRadius(20)
-                    })
-                }.padding()
-                Spacer()
-                Group{
-                    HStack{
-                        Text("28 - 9 June, 2021")
-                            .foregroundColor(.gray)
-                        Spacer()
-                    }
-                    HStack{
-                        Text(festival.title)
-                            .foregroundColor(.white)
-                            .font(.system(size: 22, weight: .semibold, design: .rounded))
-                        Spacer()
-                    }.padding(.bottom)
-                }.padding(.horizontal)
-                
-            }.frame(width: 250)
-            .clipped()
-            .cornerRadius(20)
-            .shadow(radius: 5)
-            .scaleEffect(CGSize(width: .getScale(proxy: proxy, scalerView: .leftView),
-                                height: .getScale(proxy: proxy, scalerView: .leftView)))
-            .animation(.easeOut(duration: 0.5))
-            
-        }
     }
 }

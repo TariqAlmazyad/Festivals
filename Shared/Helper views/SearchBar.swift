@@ -44,17 +44,12 @@ struct SearchBar: View {
         }.padding(12)
         .background(Color(#colorLiteral(red: 0.2077952027, green: 0.2640034556, blue: 0.3278865218, alpha: 1)))
         .cornerRadius(20.0)
-        .padding([.horizontal, .top])
+        .padding([.horizontal])
     }
 }
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)), Color(#colorLiteral(red: 0.09998283535, green: 0.1434168518, blue: 0.1889503896, alpha: 1))]),
-                           startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            SearchBar(searchedText: .constant(""))
-        }
+       HomeView()
     }
 }
