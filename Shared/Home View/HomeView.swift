@@ -10,7 +10,9 @@ import SwiftUI
 struct HomeView: View {
     @State private (set) var searchedText: String = ""
     @State private (set) var selectedCategory: FestivalCategory = .Musical
+    @State private (set) var isShowingDetail: Bool = false
     var body: some View {
+        
         VStack(spacing: 0){
             HStack {
                 Button(action: {}, label: {
@@ -29,7 +31,7 @@ struct HomeView: View {
             SearchBar(searchedText: $searchedText)
             // category
             CategoriesScrollView(selectedCategory: $selectedCategory)
-                
+            
             HStack{
                 Text("Music Festivals")
                     .font(.system(size: 26, weight: .bold))
@@ -45,7 +47,12 @@ struct HomeView: View {
                     ForEach(MockData.festivals) { festival in
                         GeometryReader { proxy in
                             
-                            MusicFestivalCellView(proxy: proxy, festival: festival)
+                            NavigationLink(
+                                destination: Text("Destination"),
+                                isActive: $isShowingDetail,
+                                label: {
+                                    MusicFestivalCellView(proxy: proxy, festival: festival)
+                                })
                             
                         }.frame(width: 125, height: 360)
                         
@@ -57,6 +64,7 @@ struct HomeView: View {
             }
             Spacer()
         }.ignoresSafeArea()
+        
     }
 }
 

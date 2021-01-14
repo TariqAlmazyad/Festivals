@@ -46,28 +46,31 @@ struct MainTabView: View {
     @State private (set) var selectedTabIndex: TabBarButtons = .House
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)), Color(#colorLiteral(red: 0.09998283535, green: 0.1434168518, blue: 0.1889503896, alpha: 1))]),
-                           startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            VStack{
-                TabView(selection: $selectedTabIndex) {
-                    HomeView()
-                        .tag(TabBarButtons.House)
-                    Text("Ticket")
-                        .tag(TabBarButtons.Ticket)
-                    Text("Mapmarker")
-                        .tag(TabBarButtons.MapMarker)
-                    Text("Profile")
-                        .tag(TabBarButtons.Profile)
-                    
-                }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .foregroundColor(.white)
-                Spacer()
-                ButtonsTabView(selectedTabIndex: $selectedTabIndex)
-                    .padding()
-            }
-        }.ignoresSafeArea()
+        NavigationView {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)), Color(#colorLiteral(red: 0.09998283535, green: 0.1434168518, blue: 0.1889503896, alpha: 1))]),
+                               startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                VStack{
+                    TabView(selection: $selectedTabIndex) {
+                        HomeView()
+                            .tag(TabBarButtons.House)
+                        Text("Ticket")
+                            .tag(TabBarButtons.Ticket)
+                        Text("Mapmarker")
+                            .tag(TabBarButtons.MapMarker)
+                        Text("Profile")
+                            .tag(TabBarButtons.Profile)
+                        
+                    }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .foregroundColor(.white)
+                    Spacer()
+                    ButtonsTabView(selectedTabIndex: $selectedTabIndex)
+                        .padding()
+                }
+            }.ignoresSafeArea()
+            .navigationBarHidden(true)
+        }
     }
 }
 

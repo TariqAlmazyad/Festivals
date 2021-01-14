@@ -11,7 +11,7 @@ import SwiftUI
 struct FestivalsApp: App {
     var body: some Scene {
         WindowGroup {
-            DetailView()
+            MainTabView()
         }
     }
 }
