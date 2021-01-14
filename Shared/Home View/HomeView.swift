@@ -12,7 +12,6 @@ struct HomeView: View {
     @State private (set) var selectedCategory: FestivalCategory = .Musical
     @State private (set) var isShowingDetail: Bool = false
     var body: some View {
-        
         VStack(spacing: 0){
             HStack {
                 Button(action: {}, label: {

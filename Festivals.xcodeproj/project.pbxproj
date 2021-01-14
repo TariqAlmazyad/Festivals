@@ -136,8 +136,17 @@
 				83F29BC025AF9D9300AA1310 /* HomeView.swift */,
 				8344508725B0FD9F00AA2042 /* MusicFestivalCellView.swift */,
 				8344507425B0F86900AA2042 /* CategoriesScrollView.swift */,
+				8344509225B103B700AA2042 /* Detail View */,
 			);
 			path = "Home View";
+			sourceTree = "<group>";
+		};
+		8344509225B103B700AA2042 /* Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				83534B4F25B008BF004D6369 /* DetailView.swift */,
+			);
+			path = "Detail View";
 			sourceTree = "<group>";
 		};
 		83F29B6B25AF8F4900AA1310 = {
@@ -160,7 +169,6 @@
 				8344507325B0F82F00AA2042 /* Home View */,
 				8344507225B0F82700AA2042 /* Helper views */,
 				8344507125B0F81D00AA2042 /* Model */,
-				83534B4F25B008BF004D6369 /* DetailView.swift */,
 				83534B7025B046D0004D6369 /* extension.swift */,
 				83F29B7325AF8F4A00AA1310 /* Assets.xcassets */,
 			);
