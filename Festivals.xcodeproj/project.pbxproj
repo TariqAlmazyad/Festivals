@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83534B5025B008BF004D6369 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83534B4F25B008BF004D6369 /* DetailView.swift */; };
+		83534B5125B008BF004D6369 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83534B4F25B008BF004D6369 /* DetailView.swift */; };
+		83534B5B25B00F16004D6369 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83534B5A25B00F16004D6369 /* Model.swift */; };
+		83534B5C25B00F16004D6369 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83534B5A25B00F16004D6369 /* Model.swift */; };
 		83F29B8D25AF8F4A00AA1310 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B8C25AF8F4A00AA1310 /* Tests_iOS.swift */; };
 		83F29B9825AF8F4A00AA1310 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B9725AF8F4A00AA1310 /* Tests_macOS.swift */; };
 		83F29B9A25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */; };
@@ -42,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83534B4F25B008BF004D6369 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		83534B5A25B00F16004D6369 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalsApp.swift; sourceTree = "<group>"; };
 		83F29B7225AF8F4900AA1310 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		83F29B7325AF8F4A00AA1310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +119,8 @@
 			children = (
 				83F29B7125AF8F4900AA1310 /* FestivalsApp.swift */,
 				83F29B7225AF8F4900AA1310 /* MainTabView.swift */,
+				83534B5A25B00F16004D6369 /* Model.swift */,
+				83534B4F25B008BF004D6369 /* DetailView.swift */,
 				83F29BC025AF9D9300AA1310 /* HomeView.swift */,
 				83F29B7325AF8F4A00AA1310 /* Assets.xcassets */,
 			);
@@ -335,8 +343,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83534B5B25B00F16004D6369 /* Model.swift in Sources */,
 				83F29B9C25AF8F4A00AA1310 /* MainTabView.swift in Sources */,
 				83F29B9A25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */,
+				83534B5025B008BF004D6369 /* DetailView.swift in Sources */,
 				83F29BC125AF9D9300AA1310 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,8 +355,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83534B5C25B00F16004D6369 /* Model.swift in Sources */,
 				83F29B9D25AF8F4A00AA1310 /* MainTabView.swift in Sources */,
 				83F29B9B25AF8F4A00AA1310 /* FestivalsApp.swift in Sources */,
+				83534B5125B008BF004D6369 /* DetailView.swift in Sources */,
 				83F29BC225AF9D9300AA1310 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

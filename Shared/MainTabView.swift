@@ -64,33 +64,7 @@ struct MainTabView: View {
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .foregroundColor(.white)
                 Spacer()
-                HStack(alignment: .bottom){
-                    ForEach(TabBarButtons.allCases, id:\.self) { tabBarButton in
-                        Spacer()
-                        Button(action: {
-                            withAnimation{
-                                selectedTabIndex = tabBarButton
-                            }
-                        }, label: {
-                            VStack(spacing: 18){
-                                Spacer()
-                                Image(systemName: selectedTabIndex == tabBarButton ? tabBarButton.selectedImageName : tabBarButton.unSelectedImageName)
-                                    .shadow(color: selectedTabIndex == tabBarButton ? .white : .clear, radius: 10, x: 0.0, y: 0.0)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 24, weight: .light, design: .rounded))
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(selectedTabIndex == tabBarButton ? Color.white : Color.clear)
-                                    .frame(width: 40, height: 3)
-                            }.padding(.bottom, tabBarButton.padding)
-                            .offset( y: selectedTabIndex == tabBarButton ? -10 : 0)
-                            
-                        })
-                        Spacer()
-                    }
-                    
-                }.frame(width: UIScreen.main.bounds.width - 50, height: 80)
-                .background(Color(#colorLiteral(red: 0.2077952027, green: 0.2640034556, blue: 0.3278865218, alpha: 1)))
-                .clipShape(Capsule())
+                ButtonsTabView(selectedTabIndex: $selectedTabIndex)
             }
         }
     }
@@ -102,3 +76,36 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
+struct ButtonsTabView: View {
+    @Binding var selectedTabIndex: TabBarButtons
+    var body: some View {
+        HStack(alignment: .bottom){
+            ForEach(TabBarButtons.allCases, id:\.self) { tabBarButton in
+                Spacer()
+                Button(action: {
+                    withAnimation(.linear){
+                        selectedTabIndex = tabBarButton
+                    }
+                }, label: {
+                    VStack(spacing: 18){
+                        Spacer()
+                        Image(systemName: selectedTabIndex == tabBarButton ? tabBarButton.selectedImageName : tabBarButton.unSelectedImageName)
+                            .shadow(color: selectedTabIndex == tabBarButton ? .white : .clear, radius: 10, x: 0.0, y: 0.0)
+                            .foregroundColor(.white)
+                            .font(.system(size: 24, weight: .light, design: .rounded))
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(selectedTabIndex == tabBarButton ? Color.white : Color.clear)
+                            .frame(width: 40, height: 3)
+                    }.padding(.bottom, tabBarButton.padding)
+                    .offset( y: selectedTabIndex == tabBarButton ? -10 : 0)
+                    
+                })
+                Spacer()
+            }
+            
+        }.frame(width: UIScreen.main.bounds.width - 50, height: 80)
+        .background(Color(#colorLiteral(red: 0.2077952027, green: 0.2640034556, blue: 0.3278865218, alpha: 1)))
+        .clipShape(Capsule())
+    }
+}
