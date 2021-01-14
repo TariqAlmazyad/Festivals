@@ -85,9 +85,7 @@ struct ButtonsTabView: View {
             ForEach(TabBarButtons.allCases, id:\.self) { tabBarButton in
                 Spacer()
                 Button(action: {
-                    withAnimation(.linear){
                         selectedTabIndex = tabBarButton
-                    }
                 }, label: {
                     VStack(spacing: 18){
                         Spacer()
@@ -95,13 +93,14 @@ struct ButtonsTabView: View {
                             .shadow(color: selectedTabIndex == tabBarButton ? .white : .clear, radius: 10, x: 0.0, y: 0.0)
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .light, design: .rounded))
+                        
                         RoundedRectangle(cornerRadius: 20)
                             .fill(selectedTabIndex == tabBarButton ? Color.white : Color.clear)
                             .frame(width: 40, height: 3)
                     }.padding(.bottom, tabBarButton.padding)
                     .offset( y: selectedTabIndex == tabBarButton ? -10 : 0)
                     
-                })
+                }).animation(.easeIn)
                 Spacer()
             }
             
