@@ -45,7 +45,7 @@ struct DetailView: View {
             Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)).ignoresSafeArea()
             ScrollView {
                 VStack {
-                    ArtistInfoView(titleRect: $titleRect)
+                    ArtistInfoView(titleRect: $titleRect, festival: festival)
                     
                     Map(coordinateRegion: $region, annotationItems: MockData.festivals) { festival in
                         MapAnnotation(coordinate: .init(latitude: festival.details[0].lat,
@@ -104,7 +104,7 @@ struct DetailView: View {
                             .background(Color(#colorLiteral(red: 0.5608644485, green: 0.4099974632, blue: 0.828809917, alpha: 1)))
                             .cornerRadius(24)
                     })
-                    .padding(.bottom, 56)
+                    .padding(.bottom, 86)
                 }
                 
                 .offset(y: imageHeight + 40)
@@ -145,7 +145,6 @@ struct DetailView: View {
             )
         }.foregroundColor(.white)
         .navigationBarHidden(true)
-        .statusBarStyle(.lightContent)
     }
     
     func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
@@ -251,10 +250,7 @@ struct DismissAndLikeView: View {
 }
 
 let loremIpsum = """
-Lorem ipsum dolor sit amet consectetur adipiscing elit donec, gravida commodo hac non mattis augue duis vitae inceptos, laoreet taciti at vehicula cum arcu dictum. Cras netus vivamus sociis pulvinar est erat, quisque imperdiet velit a justo maecenas, pretium gravida ut himenaeos nam. Tellus quis libero sociis class nec hendrerit, id proin facilisis praesent bibendum vehicula tristique, fringilla augue vitae primis turpis.
-
-Lorem ipsum dolor sit amet consectetur adipiscing elit donec, gravida commodo hac non mattis augue duis vitae inceptos, laoreet taciti at vehicula cum arcu dictum. Cras netus vivamus sociis pulvinar est erat, quisque imperdiet velit a justo maecenas, pretium gravida ut himenaeos nam. Tellus quis libero sociis class nec hendrerit, id proin facilisis praesent bibendum vehicula tristique, fringilla augue vitae primis turpis.
-
+Lorem ipsum dolor sit amet consectetur adipiscing elit donec, gravida commodo hac non mattis augue duis vitae inceptos, laoreet taciti at vehicula
 """
 
 class ViewFrame: ObservableObject {
@@ -302,6 +298,7 @@ struct DetailView_Previews: PreviewProvider {
 
 struct ArtistInfoView: View {
     @Binding var titleRect: CGRect
+    let festival: Festival
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -322,7 +319,7 @@ struct ArtistInfoView: View {
                 }
             }
             
-            Text("How to build a parallax scroll view")
+            Text(festival.title)
                 .font(.avenirNext(size: 28))
                 .background(GeometryGetter(rect: self.$titleRect)) // 2
             

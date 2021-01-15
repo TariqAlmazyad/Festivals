@@ -13,6 +13,7 @@ struct FestivalsApp: App {
         WindowGroup {
             RootView{
                 MainTabView()
+                    .statusBarStyle(.lightContent)
             }
         }
     }
