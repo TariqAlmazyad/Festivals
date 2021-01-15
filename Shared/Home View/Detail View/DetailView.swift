@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 extension Font {
     static func avenirNext(size: Int) -> Font {
@@ -25,6 +26,127 @@ struct DetailView: View {
     @ObservedObject private var articleContent: ViewFrame = ViewFrame()
     @State private var titleRect: CGRect = .zero
     @State private var headerImageRect: CGRect = .zero
+    @State private (set) var region : MKCoordinateRegion
+    @Binding var isShowingDetail: Bool
+    
+    let festival: Festival
+    
+    init(festival: Festival, isShowingDetail: Binding<Bool>) {
+        self.festival = festival
+        self._region = State(initialValue: MKCoordinateRegion(center: .init(latitude: festival.details[0].lat,
+                                                                            longitude: festival.details[0].long),
+                                                              span: .init(latitudeDelta: 0.01,
+                                                                          longitudeDelta: 0.01)))
+        self._isShowingDetail = isShowingDetail
+    }
+    
+    var body: some View {
+        ZStack {
+            Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)).ignoresSafeArea()
+            ScrollView {
+                VStack {
+                    ArtistInfoView(titleRect: $titleRect)
+                    
+                    Map(coordinateRegion: $region, annotationItems: MockData.festivals) { festival in
+                        MapAnnotation(coordinate: .init(latitude: festival.details[0].lat,
+                                                        longitude: festival.details[0].long)) {
+                            ZStack{
+                                Image(festival.imageName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 55, height: 55)
+                                    .clipShape(Circle())
+                                    .shadow(color: Color.white.opacity(0.1), radius: 10)
+                                    .overlay( Text("Tomorrowland")
+                                                .frame(width: 150, height: 50)
+                                                .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                                                .background(Color(#colorLiteral(red: 0.5608644485, green: 0.4099974632, blue: 0.828809917, alpha: 1)))
+                                                .allCornersRadius(corners: [.topLeft, .topRight, .bottomRight], 20)
+                                                .padding(49)
+                                              , alignment: .bottomLeading
+                                    )
+                            }
+                        }
+                    }.frame(height: 300)
+                    .cornerRadius(20)
+                    .padding()
+                    .padding(.bottom, 20)
+                    .colorScheme(.dark)
+                    .shadow(color: Color.white.opacity(0.3), radius: 10)
+                    
+                    VStack {
+                        HStack{
+                            Text("Interested")
+                            Spacer()
+                        }.padding()
+                        HStack {
+                            HStack(spacing: -8){
+                                ForEach(0 ..< 5) { item in
+                                    Image(festival.details.first?.people.first?.imageName ?? "")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 55, height: 55)
+                                        .overlay(Circle().stroke(Color.white,lineWidth: 0.8))
+                                        .clipShape(Circle())
+                                        .padding(.bottom, 26)
+                                }
+                            }.padding(.horizontal)
+                            Spacer()
+                        }
+                    }
+                    
+                    Button(action: {}, label: {
+                        Text("Buy Ticket")
+                            .foregroundColor(.white)
+                            .font(.system(size: 20, weight: .semibold, design: .rounded))
+                            .frame(width: 290, height: 50)
+                            .padding(6)
+                            .background(Color(#colorLiteral(red: 0.5608644485, green: 0.4099974632, blue: 0.828809917, alpha: 1)))
+                            .cornerRadius(24)
+                    })
+                    .padding(.bottom, 56)
+                }
+                
+                .offset(y: imageHeight + 40)
+                .background(GeometryGetter(rect: $articleContent.frame))
+                
+                GeometryReader { geometry in
+                    // 3
+                    ZStack(alignment: .bottom) {
+                        TabView{
+                            ForEach(MockData.festivals) { festival in
+                                ZStack {
+                                    Image(festival.imageName)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry) + 30)
+                                        .clipped()
+                                        .blur(radius: self.getBlurRadiusForImage(geometry))
+                                        .background(GeometryGetter(rect: self.$headerImageRect))
+                                }
+                            }
+                        }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                        .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry) + 30)
+                        
+                        // 4
+                        Text("How to build a parallax scroll view")
+                            .font(.avenirNext(size: 17))
+                            .foregroundColor(.white)
+                            .offset(x: 0, y: self.getHeaderTitleOffset() - 30)
+                    }
+                    .clipped()
+                    .offset(x: 0, y: self.getOffsetForHeaderImage(geometry))
+                }.frame(height: imageHeight)
+                .offset(x: 0, y: -(articleContent.startingRect?.maxY ?? UIScreen.main.bounds.height))
+            }.edgesIgnoringSafeArea(.all)
+            .overlay(
+                DismissAndLikeView(isShowingDetail: $isShowingDetail),
+                alignment: .topLeading
+            )
+        }.foregroundColor(.white)
+        .navigationBarHidden(true)
+        .statusBarStyle(.lightContent)
+    }
     
     func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
         geometry.frame(in: .global).minY
@@ -100,56 +222,17 @@ struct DetailView: View {
         return .infinity
     }
     
-    var body: some View {
-        ZStack {
-            Color(#colorLiteral(red: 0.1401646137, green: 0.1773337126, blue: 0.2355768085, alpha: 1)).ignoresSafeArea()
-            ScrollView {
-                VStack {
-                    ArtistInfoView(titleRect: $titleRect)
-                }
-                .offset(y: imageHeight + 40)
-                .background(GeometryGetter(rect: $articleContent.frame))
-                
-                GeometryReader { geometry in
-                    // 3
-                    ZStack(alignment: .bottom) {
-                        TabView{
-                            ForEach(MockData.festivals) { festival in
-                                ZStack {
-                                    Image(festival.imageName)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry) + 30)
-                                        .blur(radius: self.getBlurRadiusForImage(geometry))
-                                        .clipped()
-                                        .background(GeometryGetter(rect: self.$headerImageRect))
-                                }
-                            }
-                        }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                        
-                        // 4
-                        Text("How to build a parallax scroll view")
-                            .font(.avenirNext(size: 17))
-                            .foregroundColor(.white)
-                            .offset(x: 0, y: self.getHeaderTitleOffset() - 30)
-                    }
-                    .clipped()
-                    .offset(x: 0, y: self.getOffsetForHeaderImage(geometry))
-                }.frame(height: imageHeight)
-                .offset(x: 0, y: -(articleContent.startingRect?.maxY ?? UIScreen.main.bounds.height))
-            }.edgesIgnoringSafeArea(.all)
-            .overlay(
-                DismissAndLikeView(),
-                alignment: .topLeading
-            )
-        }.foregroundColor(.white)
-    }
 }
 
 struct DismissAndLikeView: View {
+    @Binding var isShowingDetail: Bool
     var body: some View{
         HStack{
-            Button(action: {}, label: {
+            Button(action: {
+                withAnimation{
+                    isShowingDetail.toggle()
+                }
+            }, label: {
                 Image(systemName: "arrow.left")
                     .foregroundColor(.white)
                     .font(.system(size: 24, weight: .light, design: .rounded))
@@ -170,14 +253,8 @@ struct DismissAndLikeView: View {
 let loremIpsum = """
 Lorem ipsum dolor sit amet consectetur adipiscing elit donec, gravida commodo hac non mattis augue duis vitae inceptos, laoreet taciti at vehicula cum arcu dictum. Cras netus vivamus sociis pulvinar est erat, quisque imperdiet velit a justo maecenas, pretium gravida ut himenaeos nam. Tellus quis libero sociis class nec hendrerit, id proin facilisis praesent bibendum vehicula tristique, fringilla augue vitae primis turpis.
 
-Sagittis vivamus sem morbi nam mattis phasellus vehicula facilisis suscipit posuere metus, iaculis vestibulum viverra nisl ullamcorper lectus curabitur himenaeos dictumst malesuada tempor, cras maecenas enim est eu turpis hac sociosqu tellus magnis. Sociosqu varius feugiat volutpat justo fames magna malesuada, viverra neque nibh parturient eu nascetur, cursus sollicitudin placerat lobortis nunc imperdiet. Leo lectus euismod morbi placerat pretium aliquet ultricies metus, augue turpis vulputa
-te dictumst mattis egestas laoreet, cubilia habitant magnis lacinia vivamus etiam aenean.
+Lorem ipsum dolor sit amet consectetur adipiscing elit donec, gravida commodo hac non mattis augue duis vitae inceptos, laoreet taciti at vehicula cum arcu dictum. Cras netus vivamus sociis pulvinar est erat, quisque imperdiet velit a justo maecenas, pretium gravida ut himenaeos nam. Tellus quis libero sociis class nec hendrerit, id proin facilisis praesent bibendum vehicula tristique, fringilla augue vitae primis turpis.
 
-Sagittis vivamus sem morbi nam mattis phasellus vehicula facilisis suscipit posuere metus, iaculis vestibulum viverra nisl ullamcorper lectus curabitur himenaeos dictumst malesuada tempor, cras maecenas enim est eu turpis hac sociosqu tellus magnis. Sociosqu varius feugiat volutpat justo fames magna malesuada, viverra neque nibh parturient eu nascetur, cursus sollicitudin placerat lobortis nunc imperdiet. Leo lectus euismod morbi placerat pretium aliquet ultricies metus, augue turpis vulputa
-te dictumst mattis egestas laoreet, cubilia habitant magnis lacinia vivamus etiam aenean.
-
-Sagittis vivamus sem morbi nam mattis phasellus vehicula facilisis suscipit posuere metus, iaculis vestibulum viverra nisl ullamcorper lectus curabitur himenaeos dictumst malesuada tempor, cras maecenas enim est eu turpis hac sociosqu tellus magnis. Sociosqu varius feugiat volutpat justo fames magna malesuada, viverra neque nibh parturient eu nascetur, cursus sollicitudin placerat lobortis nunc imperdiet. Leo lectus euismod morbi placerat pretium aliquet ultricies metus, augue turpis vulputa
-te dictumst mattis egestas laoreet, cubilia habitant magnis lacinia vivamus etiam aenean.
 """
 
 class ViewFrame: ObservableObject {
@@ -219,7 +296,7 @@ struct RectanglePreferenceKey: PreferenceKey {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(festival: MockData.festivals[0], isShowingDetail: .constant(false))
     }
 }
 

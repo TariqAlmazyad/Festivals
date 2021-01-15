@@ -47,7 +47,7 @@ struct HomeView: View {
                         GeometryReader { proxy in
                             
                             NavigationLink(
-                                destination: Text("Destination"),
+                                destination: DetailView(festival: festival, isShowingDetail: $isShowingDetail),
                                 isActive: $isShowingDetail,
                                 label: {
                                     MusicFestivalCellView(proxy: proxy, festival: festival)
